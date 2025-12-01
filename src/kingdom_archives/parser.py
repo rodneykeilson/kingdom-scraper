@@ -49,7 +49,8 @@ def classify_url(url: str) -> str:
             return label
     if path.endswith(":plain"):
         return "documents"
-    if path.endswith(".html") or path.endswith(".htm") or path.endswith("/"):
+    # Treat URLs with no path, paths ending with /, or .html/.htm as HTML pages
+    if not path or path == "/" or path.endswith("/") or path.endswith(".html") or path.endswith(".htm"):
         return "html"
     return "other"
 

@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+src/kingdom_archives/__init__.py
+src/kingdom_archives/cli.py
+src/kingdom_archives/client.py
+src/kingdom_archives/config.py
+src/kingdom_archives/crawler.py
+src/kingdom_archives/downloader.py
+src/kingdom_archives/parser.py
+src/kingdom_archives/state.py
+src/kingdom_archives_scraper.egg-info/PKG-INFO
+src/kingdom_archives_scraper.egg-info/SOURCES.txt
+src/kingdom_archives_scraper.egg-info/dependency_links.txt
+src/kingdom_archives_scraper.egg-info/entry_points.txt
+src/kingdom_archives_scraper.egg-info/requires.txt
+src/kingdom_archives_scraper.egg-info/top_level.txt

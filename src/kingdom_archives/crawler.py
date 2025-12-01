@@ -46,7 +46,13 @@ class Crawler:
             print(f"Failed to fetch {url}: {exc}")
             return
 
-        if classification == "html":
+        # Use Content-Type from response to determine if this is an HTML page
+        # This handles modern clean URLs like /agents, /about that return HTML
+        content_type = result.content_type.lower()
+        if content_type.startswith("text/html"):
+            self._handle_html(url, result, depth)
+        elif classification == "html":
+            # Fallback: URL looks like HTML but Content-Type says otherwise
             self._handle_html(url, result, depth)
         else:
             self._handle_asset(result, classification)
