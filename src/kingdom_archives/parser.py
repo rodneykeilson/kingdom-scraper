@@ -25,6 +25,8 @@ def extract_links(page_url: str, html: str) -> tuple[list[str], list[str]]:
     assets: list[str] = []
 
     def add_link(value: str, collection: list[str]) -> None:
+        # Normalize Windows backslashes to forward slashes before joining
+        value = value.replace("\\", "/")
         absolute = urljoin(page_url, value)
         if absolute not in collection:
             collection.append(absolute)

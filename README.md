@@ -4,6 +4,7 @@ This repository provides a Python-based scraper for `kingdomarchives.com` that i
 
 ## Features
 - Recursive crawl constrained to `kingdomarchives.com` with optional depth and URL filters.
+- **Voicelines-only mode**: Download only agent voicelines with organized, descriptive filenames.
 - Normalized output tree using slugs so assets are easy to identify by URL and media type.
 - Persistent download queue to resume long runs.
 - Metadata sidecars (content type, original URL, sha256 hash, size, and timestamp).
@@ -21,6 +22,27 @@ This repository provides a Python-based scraper for `kingdomarchives.com` that i
    ```
    Use `--execute-downloads` to actually persist files once you are satisfied with the discovered queue.
 
+## Voicelines-Only Mode
+
+To download only agent voicelines with organized filenames:
+
+```bash
+# Download all agents' voicelines (dry run)
+kingdom-archives-scraper --voicelines-only --output ./data/kingdomarchives
+
+# Download specific agents only
+kingdom-archives-scraper --voicelines-only --agents yoru jett sage --output ./data/kingdomarchives
+
+# Actually download the files
+kingdom-archives-scraper --voicelines-only --agents yoru --execute-downloads --output ./data/kingdomarchives
+```
+
+Voicelines are saved with descriptive filenames like:
+- `Yoru_Character_select.mp3`
+- `Yoru_Match_start_1.mp3` through `Yoru_Match_start_7.mp3`
+- `Yoru_Kill_1.mp3` through `Yoru_Kill_10.mp3`
+- `Yoru_Ace.mp3`
+
 ## Output layout
 ```
 output_root/
@@ -32,6 +54,14 @@ output_root/
     images/
     documents/
     other/
+  voicelines/            # voicelines-only mode output
+    Yoru/
+      Yoru_Match_start_1.mp3
+      Yoru_Match_start_2.mp3
+      ...
+    Jett/
+      Jett_Character_select.mp3
+      ...
   html/
 ```
 
